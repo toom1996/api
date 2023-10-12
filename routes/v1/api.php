@@ -40,6 +40,6 @@ Route::get('/api/v1/header/menus', function (Request $request) {
 
 Route::group(['prefix' => 'web'], function () {
     Route::group(['prefix' => 'auth'], function () {
-        Route::post('login', \App\Http\Controllers\v1\web\auth\LoginController::class . '@index');
+        Route::post('login', [\App\Http\Controllers\v1\web\AuthController::class, 'login']);
     });
 });
