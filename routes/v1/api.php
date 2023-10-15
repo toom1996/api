@@ -24,7 +24,7 @@ Route::post('/api/v1/get-user-info', function (Request $request) {
     ]);
 });
 
-Route::get('/api/v1/header/menus', function (Request $request) {
+Route::get('header/menus', function (Request $request) {
     return response()->json([
         'code' => 200,
         'data' => [
@@ -38,8 +38,10 @@ Route::get('/api/v1/header/menus', function (Request $request) {
     ]);
 });
 
-Route::group(['prefix' => 'web'], function () {
-    Route::group(['prefix' => 'auth'], function () {
-        Route::post('login', [\App\Http\Controllers\v1\web\AuthController::class, 'login']);
-    });
-});
+Route::post('web/auth/login', [\App\Http\Controllers\v1\web\AuthController::class, 'login']);
+
+//Route::middleware(['auth:sanctum'])->prefix('web')->group(function() {
+//    Route::group(['prefix' => 'auth'], function () {
+//        Route::post('login', [\App\Http\Controllers\v1\web\AuthController::class, 'login']);
+//    });
+//});

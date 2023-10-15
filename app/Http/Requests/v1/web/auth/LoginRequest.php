@@ -26,7 +26,7 @@ class LoginRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'username' => ['required'],
+            'username' => ['required', 'email'],
             'password' => ['required'],
         ];
     }
@@ -34,7 +34,8 @@ class LoginRequest extends BaseRequest
     public function messages()
     {
         return [
-            'username.required' => '用户名不能为空'
+            'username.required' => '用户名不能为空',
+            'username.email' => '请输入正确的邮箱地址'
         ];
     }
 }
